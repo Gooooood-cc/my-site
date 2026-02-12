@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { AIChat } from "@/components/ai-chat";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSerif = DM_Serif_Display({
+  weight: "400",
   subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "开发者 - 个人网站",
-  description: "热爱创造简洁优雅的数字体验，前端开发者 / AI 爱好者",
+  title: "Developer Portfolio",
+  description: "Crafting elegant digital experiences with code and creativity",
 };
 
 export default function RootLayout({
@@ -27,16 +30,15 @@ export default function RootLayout({
     <html lang="zh-CN" className="scroll-smooth">
       <body
         className={`
-          ${geistSans.variable}
-          ${geistMono.variable}
+          ${dmSerif.variable}
+          ${plusJakarta.variable}
           antialiased
-          font-sans
-          text-[#1d1d1f]
-          bg-[#F5F5F7]
+          font-body
+          text-slate-900
+          bg-[#FAFAFA]
+          selection:bg-blue-500/20
+          selection:text-blue-900
         `}
-        style={{
-          fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif",
-        }}
       >
         {children}
         <AIChat />
