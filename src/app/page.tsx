@@ -104,12 +104,12 @@ export default function Home() {
         <BentoGrid maxWidth="xl" gap="lg">
           {/* Featured Projects */}
           <BentoItem colSpan={2} rowSpan={2}>
-            <GlassCard padding="lg" hoverEffect className="h-full">
+            <GlassCard padding="xl" hoverEffect className="h-full">
               <div className="h-full flex flex-col">
-                <h2 className="text-2xl font-semibold text-[#1d1d1f] mb-4">
+                <h2 className="text-2xl font-semibold text-[#1d1d1f] mb-6">
                   🚀 精选项目
                 </h2>
-                <div className="flex-1 flex items-center justify-center bg-[#F5F5F7]/50 rounded-xl">
+                <div className="flex-1 flex items-center justify-center bg-[#F5F5F7]/50 rounded-2xl">
                   <p className="text-[#86868b]">项目展示区域</p>
                 </div>
               </div>
@@ -118,8 +118,8 @@ export default function Home() {
 
           {/* Skills */}
           <BentoItem>
-            <GlassCard padding="lg" hoverEffect>
-              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">
+            <GlassCard padding="xl" hoverEffect>
+              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-4">
                 💻 技能专长
               </h3>
               <p className="text-[#86868b]">React / Next.js / TypeScript</p>
@@ -128,8 +128,8 @@ export default function Home() {
 
           {/* Blog */}
           <BentoItem>
-            <GlassCard padding="lg" hoverEffect>
-              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">
+            <GlassCard padding="xl" hoverEffect>
+              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-4">
                 📝 技术博客
               </h3>
               <p className="text-[#86868b]">分享开发心得</p>
@@ -138,8 +138,8 @@ export default function Home() {
 
           {/* Timeline */}
           <BentoItem>
-            <GlassCard padding="lg" hoverEffect>
-              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">
+            <GlassCard padding="xl" hoverEffect>
+              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-4">
                 📅 履历
               </h3>
               <p className="text-[#86868b]">工作经历时间线</p>
@@ -148,8 +148,8 @@ export default function Home() {
 
           {/* Photography */}
           <BentoItem>
-            <GlassCard padding="lg" hoverEffect>
-              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">
+            <GlassCard padding="xl" hoverEffect>
+              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-4">
                 📷 摄影
               </h3>
               <p className="text-[#86868b]">作品集展示</p>
@@ -158,10 +158,10 @@ export default function Home() {
 
           {/* Contact CTA */}
           <BentoItem colSpan={2}>
-            <GlassCard padding="lg" hoverEffect className="bg-gradient-to-r from-[#0071e3]/10 to-[#5856d6]/10">
+            <GlassCard padding="xl" hoverEffect className="bg-gradient-to-r from-[#0071e3]/10 to-[#5856d6]/10">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-semibold text-[#1d1d1f] mb-1">
+                  <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">
                     联系我
                   </h3>
                   <p className="text-[#86868b]">

@@ -7,16 +7,17 @@ interface GlassCardProps extends HTMLMotionProps<"div"> {
   children: ReactNode;
   className?: string;
   hoverEffect?: boolean;
-  padding?: "none" | "sm" | "md" | "lg" | "xl";
+  padding?: "none" | "sm" | "md" | "lg" | "xl" | "2xl";
 }
 
-// Padding presets
+// Padding presets - 强制巨大留白
 const paddingStyles = {
   none: "",
-  sm: "p-4",
-  md: "p-6",
-  lg: "p-8",
-  xl: "p-10",
+  sm: "p-6",
+  md: "p-8",
+  lg: "p-12",
+  xl: "p-16",
+  "2xl": "p-20",
 };
 
 export function GlassCard({
@@ -28,11 +29,11 @@ export function GlassCard({
 }: GlassCardProps) {
   const baseStyles = `
     relative
-    bg-white/80
-    backdrop-blur-xl
-    rounded-[24px]
-    border border-white/60
-    shadow-sm
+    bg-white/40
+    backdrop-blur-2xl
+    rounded-[28px]
+    border-[1.5px] border-white/70
+    shadow-[0_8px_32px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)]
     overflow-hidden
   `;
 
@@ -41,9 +42,10 @@ export function GlassCard({
       cursor-pointer
       transition-all
       duration-300
-      hover:shadow-xl
+      hover:shadow-[0_12px_48px_rgba(0,0,0,0.12),0_4px_16px_rgba(0,0,0,0.06)]
       hover:scale-[1.02]
-      hover:bg-white/90
+      hover:bg-white/50
+      hover:border-white/80
     `
     : "";
 
@@ -61,8 +63,8 @@ export function GlassCard({
       }}
       {...props}
     >
-      {/* Subtle hairline border */}
-      <div className="absolute inset-0 rounded-[24px] pointer-events-none border border-white/30" />
+      {/* Inner highlight for glass depth */}
+      <div className="absolute inset-[1px] rounded-[27px] pointer-events-none border border-white/40 bg-gradient-to-br from-white/30 to-transparent" />
       
       {/* Content */}
       <div className="relative z-10">{children}</div>
@@ -106,7 +108,7 @@ export function BentoItem({
       `}
       {...props}
     >
-      <GlassCard padding="lg" className="h-full w-full">
+      <GlassCard padding="xl" className="h-full w-full">
         {children}
       </GlassCard>
     </motion.div>
