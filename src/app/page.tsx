@@ -66,8 +66,8 @@ export default function Home() {
           animate="visible"
           className="max-w-7xl mx-auto w-full"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left: Intro Text */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            {/* Left: Intro Text + Avatar */}
             <div className="lg:col-span-7 space-y-8">
               <motion.div variants={itemVariants}>
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-sm text-slate-600">
@@ -98,42 +98,45 @@ export default function Home() {
                 </span>
               </motion.p>
 
-              <motion.div variants={itemVariants} className="flex flex-col gap-3 pt-4">
+              <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-4">
                 <Link href="/projects">
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group w-fit px-8 py-4 bg-slate-900 text-white rounded-2xl font-medium flex items-center justify-between gap-2 hover:bg-slate-800 transition-colors"
+                    className="group w-fit px-8 py-4 bg-slate-900 text-white rounded-2xl font-medium flex flex-col items-start gap-1 hover:bg-slate-800 transition-colors"
                   >
                     <span>查看项目</span>
-                    <div className="flex items-center gap-1">
-                      <span className="text-slate-400 text-sm">View Projects</span>
-                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </div>
+                    <span className="text-slate-400 text-sm">View Projects</span>
                   </motion.button>
                 </Link>
                 <Link href="/resume">
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-fit px-8 py-4 bg-white text-slate-900 rounded-2xl font-medium border border-slate-200 hover:bg-slate-50 transition-colors flex items-center justify-between gap-2"
+                    className="w-fit px-8 py-4 bg-white text-slate-900 rounded-2xl font-medium border border-slate-200 hover:bg-slate-50 transition-colors flex flex-col items-start gap-1"
                   >
                     <span>查看简历</span>
                     <span className="text-slate-400 text-sm">Resume</span>
                   </motion.button>
                 </Link>
               </motion.div>
+
+              {/* Avatar - positioned below buttons to align with content below */}
+              <motion.div
+                variants={itemVariants}
+                className="pt-4"
+              >
+                <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full bg-slate-100 flex items-center justify-center shadow-lg">
+                  <span className="text-6xl sm:text-7xl lg:text-8xl">👨‍💻</span>
+                </div>
+              </motion.div>
             </div>
 
-            {/* Right: Avatar */}
+            {/* Right: Empty (for balance) */}
             <motion.div
               variants={itemVariants}
-              className="lg:col-span-5 flex justify-center lg:justify-end"
+              className="hidden lg:block lg:col-span-5"
             >
-              {/* Avatar with circular background */}
-              <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full bg-slate-100 flex items-center justify-center shadow-lg">
-                <span className="text-7xl lg:text-8xl">👨‍💻</span>
-              </div>
             </motion.div>
           </div>
         </motion.div>

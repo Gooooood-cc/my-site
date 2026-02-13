@@ -19,7 +19,7 @@ export function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/50"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md border-b border-slate-200/30"
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -30,7 +30,7 @@ export function Navbar() {
               href="/"
               className="text-lg font-semibold text-slate-900 hover:text-blue-600 transition-colors"
             >
-              WinterChen / Holly Chi
+              Holly Chi
             </Link>
 
             {/* Navigation Links - Left aligned */}
@@ -115,7 +115,7 @@ export function Navbar() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="md:hidden border-t border-slate-200/50">
+      <div className="md:hidden border-t border-slate-200/30">
         <div className="flex items-center justify-around py-2">
           {navItems.map((item) => (
             <Link
