@@ -30,7 +30,7 @@ export function Navbar() {
               href="/"
               className="text-lg font-semibold text-slate-900 hover:text-blue-600 transition-colors"
             >
-              WinterChen
+              WinterChen / Holly Chi
             </Link>
 
             {/* Navigation Links - Left aligned */}
