@@ -20,7 +20,7 @@ export function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md border-b border-slate-200/30"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/30 dark:bg-slate-950/30 backdrop-blur-md border-b border-slate-200/30 dark:border-slate-800/30"
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -29,7 +29,7 @@ export function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="text-lg font-semibold text-slate-900 hover:text-blue-600 transition-colors"
+              className="text-lg font-semibold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
               Holly Chi
             </Link>
@@ -43,8 +43,8 @@ export function Navbar() {
                   className={`
                     text-sm font-medium transition-colors relative
                     ${pathname === item.href
-                      ? "text-blue-600"
-                      : "text-slate-600 hover:text-slate-900"
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
                     }
                   `}
                 >
@@ -52,7 +52,7 @@ export function Navbar() {
                   {pathname === item.href && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 rounded-full"
                     />
                   )}
                 </Link>
@@ -70,7 +70,7 @@ export function Navbar() {
               aria-label="GitHub"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
               <Github className="w-4 h-4" />
             </motion.a>
@@ -81,7 +81,7 @@ export function Navbar() {
               aria-label="Email"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
               <Mail className="w-4 h-4" />
             </motion.a>
@@ -92,7 +92,7 @@ export function Navbar() {
               aria-label="WeChat"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               title="微信: WinterChen"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -119,7 +119,7 @@ export function Navbar() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="md:hidden border-t border-slate-200/30">
+      <div className="md:hidden border-t border-slate-200/30 dark:border-slate-800/30">
         <div className="flex items-center justify-around py-2">
           {navItems.map((item) => (
             <Link
@@ -127,9 +127,9 @@ export function Navbar() {
               href={item.href}
               className={`
                 text-sm font-medium py-2 px-4 rounded-lg transition-colors
-                ${pathname === item.href 
-                  ? "text-blue-600 bg-blue-50" 
-                  : "text-slate-600"
+                ${pathname === item.href
+                  ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950"
+                  : "text-slate-600 dark:text-slate-400"
                 }
               `}
             >
