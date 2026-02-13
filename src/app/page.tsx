@@ -103,7 +103,7 @@ export default function Home() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group w-fit px-8 py-4 bg-slate-900 text-white rounded-2xl font-medium flex flex-col items-start gap-1 hover:bg-slate-800 transition-colors"
+                    className="group w-fit px-8 py-4 bg-slate-900 text-white rounded-2xl font-medium flex flex-col items-center gap-1 hover:bg-slate-800 transition-colors"
                   >
                     <span>查看项目</span>
                     <span className="text-slate-400 text-sm">View Projects</span>
@@ -113,7 +113,7 @@ export default function Home() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-fit px-8 py-4 bg-white text-slate-900 rounded-2xl font-medium border border-slate-200 hover:bg-slate-50 transition-colors flex flex-col items-start gap-1"
+                    className="w-fit px-8 py-4 bg-white text-slate-900 rounded-2xl font-medium border border-slate-200 hover:bg-slate-50 transition-colors flex flex-col items-center gap-1"
                   >
                     <span>查看简历</span>
                     <span className="text-slate-400 text-sm">Resume</span>
