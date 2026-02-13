@@ -118,7 +118,7 @@ export default function ProjectsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-12"
         >
-          <h1 className="font-display text-4xl sm:text-5xl text-slate-900 mb-2">
+          <h1 className="font-body text-4xl sm:text-5xl font-bold text-slate-900 mb-2">
             项目作品
           </h1>
           <p className="font-body text-lg text-slate-500">
@@ -134,7 +134,7 @@ export default function ProjectsPage() {
           className="mb-16"
         >
           <motion.div variants={itemVariants} className="mb-8">
-            <h2 className="font-display text-2xl text-slate-900 mb-1">精选项目</h2>
+            <h2 className="font-body text-2xl font-semibold text-slate-900 mb-1">精选项目</h2>
             <p className="font-body text-slate-500">Featured Projects</p>
           </motion.div>
 
@@ -156,7 +156,7 @@ export default function ProjectsPage() {
 
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <div>
-                      <h3 className="font-display text-2xl text-slate-900">
+                      <h3 className="font-body text-2xl font-semibold text-slate-900">
                         {project.title}
                       </h3>
                       <p className="font-body text-slate-400 text-sm">
@@ -221,7 +221,7 @@ export default function ProjectsPage() {
           animate="visible"
         >
           <motion.div variants={itemVariants} className="mb-8">
-            <h2 className="font-display text-2xl text-slate-900 mb-1">更多项目</h2>
+            <h2 className="font-body text-2xl font-semibold text-slate-900 mb-1">更多项目</h2>
             <p className="font-body text-slate-500">More Projects</p>
           </motion.div>
 
@@ -239,7 +239,7 @@ export default function ProjectsPage() {
                   </div>
 
                   <div className="flex items-center gap-2 mb-2">
-                    <h3 className="font-display text-lg text-slate-900">
+                    <h3 className="font-body text-lg font-semibold text-slate-900">
                       {project.title}
                     </h3>
                   </div>
@@ -302,7 +302,7 @@ export default function ProjectsPage() {
           className="mt-20"
         >
           <GlassCard padding="xl" className="text-center">
-            <h2 className="font-display text-2xl text-slate-900 mb-3">
+            <h2 className="font-body text-2xl font-semibold text-slate-900 mb-3">
               有更多想法？
             </h2>
             <p className="font-body text-slate-600 mb-6">

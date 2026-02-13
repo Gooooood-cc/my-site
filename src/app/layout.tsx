@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { AIChat } from "@/components/ai-chat";
 import { Navbar } from "@/components/layout/navbar";
 
-const dmSerif = DM_Serif_Display({
-  weight: "400",
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
@@ -31,7 +30,7 @@ export default function RootLayout({
     <html lang="zh-CN" className="scroll-smooth">
       <body
         className={`
-          ${dmSerif.variable}
+          ${inter.variable}
           ${plusJakarta.variable}
           antialiased
           font-body

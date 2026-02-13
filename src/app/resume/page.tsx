@@ -123,7 +123,7 @@ export default function ResumePage() {
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <h1 className="font-display text-4xl sm:text-5xl text-slate-900 mb-2">
+              <h1 className="font-body text-4xl sm:text-5xl font-bold text-slate-900 mb-2">
                 简历
               </h1>
               <p className="font-body text-lg text-slate-500">
@@ -151,7 +151,7 @@ export default function ResumePage() {
           className="mb-16"
         >
           <motion.div variants={itemVariants} className="mb-8">
-            <h2 className="font-display text-2xl text-slate-900 mb-1">工作经历</h2>
+              <h2 className="font-body text-2xl font-semibold text-slate-900 mb-1">工作经历</h2>
             <p className="font-body text-slate-500">Work Experience</p>
           </motion.div>
 
@@ -163,7 +163,7 @@ export default function ResumePage() {
                     <div className="flex-1">
                       <div className="flex items-start justify-between gap-4 mb-2">
                         <div>
-                          <h3 className="font-display text-xl text-slate-900">
+                          <h3 className="font-body text-xl font-semibold text-slate-900">
                             {job.position}
                           </h3>
                           <p className="font-body text-slate-400 text-sm">
@@ -213,7 +213,7 @@ export default function ResumePage() {
           className="mb-16"
         >
           <motion.div variants={itemVariants} className="mb-8">
-            <h2 className="font-display text-2xl text-slate-900 mb-1">项目经历</h2>
+            <h2 className="font-body text-2xl font-semibold text-slate-900 mb-1">项目经历</h2>
             <p className="font-body text-slate-500">Project Experience</p>
           </motion.div>
 
@@ -225,7 +225,7 @@ export default function ResumePage() {
                     <div className="flex-1">
                       <div className="flex items-start justify-between gap-4 mb-2">
                         <div>
-                          <h3 className="font-display text-xl text-slate-900">
+                          <h3 className="font-body text-xl font-semibold text-slate-900">
                             {project.name}
                           </h3>
                           <p className="font-body text-slate-400 text-sm">
@@ -282,7 +282,7 @@ export default function ResumePage() {
           animate="visible"
         >
           <motion.div variants={itemVariants} className="mb-8">
-            <h2 className="font-display text-2xl text-slate-900 mb-1">技能专长</h2>
+            <h2 className="font-body text-2xl font-semibold text-slate-900 mb-1">技能专长</h2>
             <p className="font-body text-slate-500">Skills</p>
           </motion.div>
 

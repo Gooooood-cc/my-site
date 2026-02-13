@@ -80,7 +80,7 @@ export default function Home() {
 
               <motion.h1 
                 variants={itemVariants}
-                className="font-display text-5xl sm:text-6xl lg:text-7xl text-slate-900 leading-[1.1]"
+                className="font-body text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1]"
               >
                 你好，我是
                 <br />
@@ -123,48 +123,19 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Right: Avatar & Stats */}
+            {/* Right: Avatar & Name */}
             <motion.div 
               variants={itemVariants}
-              className="lg:col-span-5"
+              className="lg:col-span-5 flex flex-col items-center"
             >
-              <GlassCard variant="elevated" padding="2xl" className="relative overflow-hidden">
-                <div className="aspect-square rounded-3xl bg-gradient-to-br from-slate-100 to-slate-200 flex flex-col items-center justify-center">
-                  {/* Avatar placeholder */}
-                  <div className="w-32 h-32 rounded-full bg-slate-300 mb-6 flex items-center justify-center text-4xl">
-                    👨‍💻
-                  </div>
-                  <div className="text-center space-y-2">
-                    <p className="font-display text-2xl text-slate-900">WinterChen</p>
-                    <p className="font-body text-slate-500">全栈开发者</p>
-                    <p className="font-body text-sm text-slate-400">Full Stack Developer</p>
-                  </div>
-                </div>
-                
-                {/* Floating badge */}
-                <motion.div 
-                  className="absolute -bottom-2 -right-2 px-4 py-2 bg-slate-900 text-white rounded-xl font-body text-sm shadow-xl"
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  5+ 年经验
-                </motion.div>
-              </GlassCard>
-
-              {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-3 mt-4">
-                <GlassCard padding="md" className="text-center">
-                  <p className="font-display text-2xl text-slate-900">50+</p>
-                  <p className="font-body text-xs text-slate-500">项目</p>
-                </GlassCard>
-                <GlassCard padding="md" className="text-center">
-                  <p className="font-display text-2xl text-slate-900">30+</p>
-                  <p className="font-body text-xs text-slate-500">客户</p>
-                </GlassCard>
-                <GlassCard padding="md" className="text-center">
-                  <p className="font-display text-2xl text-slate-900">5+</p>
-                  <p className="font-body text-xs text-slate-500">年</p>
-                </GlassCard>
+              {/* Avatar placeholder */}
+              <div className="w-40 h-40 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 mb-6 flex items-center justify-center text-5xl shadow-lg">
+                👨‍💻
+              </div>
+              <div className="text-center space-y-2">
+                <p className="font-body text-2xl font-bold text-slate-900">WinterChen</p>
+                <p className="font-body text-slate-500">全栈开发者</p>
+                <p className="font-body text-sm text-slate-400">Full Stack Developer</p>
               </div>
             </motion.div>
           </div>
@@ -182,7 +153,7 @@ export default function Home() {
         >
           <div className="flex items-end justify-between mb-12">
             <div>
-              <h2 className="font-display text-4xl sm:text-5xl text-slate-900 mb-2">
+              <h2 className="font-body text-4xl sm:text-5xl font-bold text-slate-900 mb-2">
                 精选作品
               </h2>
               <p className="font-body text-lg text-slate-500">
@@ -220,7 +191,7 @@ export default function Home() {
                          <Globe className="w-8 h-8 text-slate-700" />}
                       </div>
                     </div>
-                    <h3 className="font-display text-xl text-slate-900 mb-1">
+                    <h3 className="font-body text-xl font-semibold text-slate-900 mb-1">
                       {project.title}
                     </h3>
                     <p className="font-body text-sm text-slate-400 mb-3">
@@ -250,7 +221,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-16 px-6 border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="font-display text-2xl text-slate-900 mb-2">
+          <p className="font-body text-2xl font-bold text-slate-900 mb-2">
             让我们一起创造精彩
           </p>
           <p className="font-body text-slate-500 mb-6">
