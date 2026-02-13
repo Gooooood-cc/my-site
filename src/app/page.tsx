@@ -66,8 +66,8 @@ export default function Home() {
           animate="visible"
           className="max-w-7xl mx-auto w-full"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Left: Intro Text + Avatar */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left: Intro Text */}
             <div className="lg:col-span-7 space-y-8">
               <motion.div variants={itemVariants}>
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-sm text-slate-600">
@@ -120,23 +120,16 @@ export default function Home() {
                   </motion.button>
                 </Link>
               </motion.div>
-
-              {/* Avatar - positioned below buttons to align with content below */}
-              <motion.div
-                variants={itemVariants}
-                className="pt-4"
-              >
-                <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full bg-slate-100 flex items-center justify-center shadow-lg">
-                  <span className="text-6xl sm:text-7xl lg:text-8xl">👨‍💻</span>
-                </div>
-              </motion.div>
             </div>
 
-            {/* Right: Empty (for balance) */}
+            {/* Right: Avatar */}
             <motion.div
               variants={itemVariants}
-              className="hidden lg:block lg:col-span-5"
+              className="lg:col-span-5 flex justify-center lg:justify-end"
             >
+              <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full bg-slate-100 flex items-center justify-center shadow-lg">
+                <span className="text-7xl lg:text-8xl">👨‍💻</span>
+              </div>
             </motion.div>
           </div>
         </motion.div>
