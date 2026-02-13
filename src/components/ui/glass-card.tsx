@@ -183,7 +183,7 @@ export function FeatureCard({
         </div>
       )}
       {title && (
-        <h3 className="text-xl text-slate-900 mb-2 font-body font-semibold">
+        <h3 className="text-xl text-slate-900 mb-2 font-semibold">
           {title}
         </h3>
       )}

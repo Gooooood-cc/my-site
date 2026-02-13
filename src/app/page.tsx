@@ -68,7 +68,7 @@ export default function Home() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left: Intro Text */}
-            <div className="lg:col-span-7 space-y-8">
+            <div className="lg:col-span-8 space-y-8">
               <motion.div variants={itemVariants}>
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 border border-white/60 text-sm text-slate-600 backdrop-blur-sm">
                   <Sparkles className="w-4 h-4" />
@@ -78,18 +78,18 @@ export default function Home() {
                 </span>
               </motion.div>
 
-              <motion.h1 
+              <motion.h1
                 variants={itemVariants}
-                className="font-body text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1]"
+                className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1]"
               >
                 你好，我是
                 <br />
                 <span className="text-slate-400">WinterChen</span>
               </motion.h1>
 
-              <motion.p 
+              <motion.p
                 variants={itemVariants}
-                className="font-body text-lg sm:text-xl text-slate-500 max-w-xl leading-relaxed"
+                className="text-lg sm:text-xl text-slate-500 max-w-xl leading-relaxed"
               >
                 专注于构建优雅、高性能的 Web 应用
                 <br />
@@ -103,7 +103,7 @@ export default function Home() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group px-8 py-4 bg-slate-900 text-white rounded-2xl font-body font-medium flex items-center gap-2 hover:bg-slate-800 transition-colors"
+                    className="group px-8 py-4 bg-slate-900 text-white rounded-2xl font-medium flex items-center gap-2 hover:bg-slate-800 transition-colors"
                   >
                     查看项目
                     <span className="text-slate-400 text-sm">View Projects</span>
@@ -114,7 +114,7 @@ export default function Home() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="px-8 py-4 bg-white/60 text-slate-900 rounded-2xl font-body font-medium border border-white/60 backdrop-blur-sm hover:bg-white/80 transition-colors"
+                    className="px-8 py-4 bg-white/60 text-slate-900 rounded-2xl font-medium border border-white/60 backdrop-blur-sm hover:bg-white/80 transition-colors"
                   >
                     查看简历
                     <span className="text-slate-400 text-sm ml-1">Resume</span>
@@ -123,19 +123,14 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Right: Avatar & Name */}
-            <motion.div 
+            {/* Right: Avatar */}
+            <motion.div
               variants={itemVariants}
-              className="lg:col-span-5 flex flex-col items-center"
+              className="lg:col-span-4 flex flex-col items-center lg:items-end"
             >
-              {/* Avatar placeholder */}
-              <div className="w-40 h-40 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 mb-6 flex items-center justify-center text-5xl shadow-lg">
+              {/* Avatar only */}
+              <div className="w-48 h-48 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center text-6xl shadow-lg">
                 👨‍💻
-              </div>
-              <div className="text-center space-y-2">
-                <p className="font-body text-2xl font-bold text-slate-900">WinterChen</p>
-                <p className="font-body text-slate-500">全栈开发者</p>
-                <p className="font-body text-sm text-slate-400">Full Stack Developer</p>
               </div>
             </motion.div>
           </div>
@@ -153,16 +148,16 @@ export default function Home() {
         >
           <div className="flex items-end justify-between mb-12">
             <div>
-              <h2 className="font-body text-4xl sm:text-5xl font-bold text-slate-900 mb-2">
+              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-2">
                 精选作品
               </h2>
-              <p className="font-body text-lg text-slate-500">
+              <p className="text-lg text-slate-500">
                 Featured Work
               </p>
             </div>
-            <Link 
-              href="/projects" 
-              className="hidden sm:flex items-center gap-2 text-slate-600 hover:text-slate-900 font-body transition-colors"
+            <Link
+              href="/projects"
+              className="hidden sm:flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
             >
               查看全部
               <ArrowUpRight className="w-4 h-4" />
@@ -191,20 +186,20 @@ export default function Home() {
                          <Globe className="w-8 h-8 text-slate-700" />}
                       </div>
                     </div>
-                    <h3 className="font-body text-xl font-semibold text-slate-900 mb-1">
+                    <h3 className="text-xl font-semibold text-slate-900 mb-1">
                       {project.title}
                     </h3>
-                    <p className="font-body text-sm text-slate-400 mb-3">
+                    <p className="text-sm text-slate-400 mb-3">
                       {project.titleEn}
                     </p>
-                    <p className="font-body text-slate-600 mb-4">
+                    <p className="text-slate-600 mb-4">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
-                        <span 
+                        <span
                           key={tag}
-                          className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm font-body"
+                          className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm"
                         >
                           {tag}
                         </span>
@@ -221,14 +216,14 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-16 px-6 border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="font-body text-2xl font-bold text-slate-900 mb-2">
+          <p className="text-2xl font-bold text-slate-900 mb-2">
             让我们一起创造精彩
           </p>
-          <p className="font-body text-slate-500 mb-6">
+          <p className="text-slate-500 mb-6">
             Let&apos;s create something amazing together
           </p>
           <div className="flex items-center justify-center gap-4">
-            <a 
+            <a
               href="https://github.com/WinterChenS"
               target="_blank"
               rel="noopener noreferrer"
@@ -239,7 +234,7 @@ export default function Home() {
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
               </svg>
             </a>
-            <a 
+            <a
               href="mailto:your.email@example.com"
               className="w-12 h-12 rounded-2xl bg-white/60 border border-white/60 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-white/80 transition-colors backdrop-blur-sm"
               aria-label="Email"
@@ -249,7 +244,7 @@ export default function Home() {
               </svg>
             </a>
           </div>
-          <p className="text-center font-body text-sm text-slate-400 mt-8">
+          <p className="text-center text-sm text-slate-400 mt-8">
             © 2026 WinterChen. 使用 Next.js & Tailwind CSS 构建
           </p>
         </div>

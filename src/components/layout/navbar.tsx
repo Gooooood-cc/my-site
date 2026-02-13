@@ -23,41 +23,44 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo - Left */}
-          <Link 
-            href="/" 
-            className="text-lg font-semibold text-slate-900 hover:text-blue-600 transition-colors"
-          >
-            WinterChen
-          </Link>
+          {/* Left: Logo + Navigation */}
+          <div className="flex items-center gap-12">
+            {/* Logo */}
+            <Link
+              href="/"
+              className="text-lg font-semibold text-slate-900 hover:text-blue-600 transition-colors"
+            >
+              WinterChen
+            </Link>
 
-          {/* Navigation Links - Center */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`
-                  text-sm font-medium transition-colors relative
-                  ${pathname === item.href 
-                    ? "text-blue-600" 
-                    : "text-slate-600 hover:text-slate-900"
-                  }
-                `}
-              >
-                {item.label}
-                {pathname === item.href && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
-                  />
-                )}
-              </Link>
-            ))}
+            {/* Navigation Links - Left aligned */}
+            <div className="hidden md:flex items-center gap-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`
+                    text-sm font-medium transition-colors relative
+                    ${pathname === item.href
+                      ? "text-blue-600"
+                      : "text-slate-600 hover:text-slate-900"
+                    }
+                  `}
+                >
+                  {item.label}
+                  {pathname === item.href && (
+                    <motion.div
+                      layoutId="navbar-indicator"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
+                    />
+                  )}
+                </Link>
+              ))}
+            </div>
           </div>
 
-          {/* Social Links + Download - Right */}
-          <div className="flex items-center gap-2">
+          {/* Right: Social Links + Download */}
+          <div className="flex items-center gap-3">
             {/* GitHub */}
             <motion.a
               href="https://github.com/WinterChenS"

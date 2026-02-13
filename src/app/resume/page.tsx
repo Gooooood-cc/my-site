@@ -123,10 +123,10 @@ export default function ResumePage() {
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <h1 className="font-body text-4xl sm:text-5xl font-bold text-slate-900 mb-2">
+              <h1 className=" text-4xl sm:text-5xl font-bold text-slate-900 mb-2">
                 简历
               </h1>
-              <p className="font-body text-lg text-slate-500">
+              <p className=" text-lg text-slate-500">
                 Resume / CV
               </p>
             </div>
@@ -135,7 +135,7 @@ export default function ResumePage() {
               download
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-2xl font-body font-medium hover:bg-slate-800 transition-colors w-fit"
+              className="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-2xl  font-medium hover:bg-slate-800 transition-colors w-fit"
             >
               <Download className="w-5 h-5" />
               <span>下载简历 PDF</span>
@@ -151,8 +151,8 @@ export default function ResumePage() {
           className="mb-16"
         >
           <motion.div variants={itemVariants} className="mb-8">
-              <h2 className="font-body text-2xl font-semibold text-slate-900 mb-1">工作经历</h2>
-            <p className="font-body text-slate-500">Work Experience</p>
+              <h2 className=" text-2xl font-semibold text-slate-900 mb-1">工作经历</h2>
+            <p className=" text-slate-500">Work Experience</p>
           </motion.div>
 
           <div className="space-y-6">
@@ -163,14 +163,14 @@ export default function ResumePage() {
                     <div className="flex-1">
                       <div className="flex items-start justify-between gap-4 mb-2">
                         <div>
-                          <h3 className="font-body text-xl font-semibold text-slate-900">
+                          <h3 className=" text-xl font-semibold text-slate-900">
                             {job.position}
                           </h3>
-                          <p className="font-body text-slate-400 text-sm">
+                          <p className=" text-slate-400 text-sm">
                             {job.positionEn}
                           </p>
                         </div>
-                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm font-body whitespace-nowrap">
+                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm  whitespace-nowrap">
                           <Calendar className="w-3 h-3" />
                           {job.period}
                         </span>
@@ -178,11 +178,11 @@ export default function ResumePage() {
                       
                       <div className="flex items-center gap-2 mb-3">
                         <Building2 className="w-4 h-4 text-slate-400" />
-                        <span className="font-body text-slate-700">{job.company}</span>
-                        <span className="font-body text-slate-400 text-sm">/ {job.companyEn}</span>
+                        <span className=" text-slate-700">{job.company}</span>
+                        <span className=" text-slate-400 text-sm">/ {job.companyEn}</span>
                       </div>
 
-                      <p className="font-body text-slate-600 mb-4">
+                      <p className=" text-slate-600 mb-4">
                         {job.description}
                       </p>
 
@@ -190,7 +190,7 @@ export default function ResumePage() {
                         {job.achievements.map((achievement, index) => (
                           <li 
                             key={index}
-                            className="flex items-start gap-2 font-body text-sm text-slate-600"
+                            className="flex items-start gap-2  text-sm text-slate-600"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
                             {achievement}
@@ -213,8 +213,8 @@ export default function ResumePage() {
           className="mb-16"
         >
           <motion.div variants={itemVariants} className="mb-8">
-            <h2 className="font-body text-2xl font-semibold text-slate-900 mb-1">项目经历</h2>
-            <p className="font-body text-slate-500">Project Experience</p>
+            <h2 className=" text-2xl font-semibold text-slate-900 mb-1">项目经历</h2>
+            <p className=" text-slate-500">Project Experience</p>
           </motion.div>
 
           <div className="space-y-6">
@@ -225,25 +225,25 @@ export default function ResumePage() {
                     <div className="flex-1">
                       <div className="flex items-start justify-between gap-4 mb-2">
                         <div>
-                          <h3 className="font-body text-xl font-semibold text-slate-900">
+                          <h3 className=" text-xl font-semibold text-slate-900">
                             {project.name}
                           </h3>
-                          <p className="font-body text-slate-400 text-sm">
+                          <p className=" text-slate-400 text-sm">
                             {project.nameEn}
                           </p>
                         </div>
-                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm font-body">
+                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm ">
                           <Code2 className="w-3 h-3" />
                           {project.period}
                         </span>
                       </div>
 
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="font-body text-slate-700">{project.role}</span>
-                        <span className="font-body text-slate-400 text-sm">/ {project.roleEn}</span>
+                        <span className=" text-slate-700">{project.role}</span>
+                        <span className=" text-slate-400 text-sm">/ {project.roleEn}</span>
                       </div>
 
-                      <p className="font-body text-slate-600 mb-4">
+                      <p className=" text-slate-600 mb-4">
                         {project.description}
                       </p>
 
@@ -251,7 +251,7 @@ export default function ResumePage() {
                         {project.technologies.map((tech) => (
                           <span 
                             key={tech}
-                            className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-body"
+                            className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm "
                           >
                             {tech}
                           </span>
@@ -261,7 +261,7 @@ export default function ResumePage() {
                       {project.link && (
                         <a 
                           href={project.link}
-                          className="inline-flex items-center gap-1 text-sm font-body text-slate-600 hover:text-slate-900 transition-colors"
+                          className="inline-flex items-center gap-1 text-sm  text-slate-600 hover:text-slate-900 transition-colors"
                         >
                           查看项目
                           <ExternalLink className="w-3 h-3" />
@@ -282,28 +282,28 @@ export default function ResumePage() {
           animate="visible"
         >
           <motion.div variants={itemVariants} className="mb-8">
-            <h2 className="font-body text-2xl font-semibold text-slate-900 mb-1">技能专长</h2>
-            <p className="font-body text-slate-500">Skills</p>
+            <h2 className=" text-2xl font-semibold text-slate-900 mb-1">技能专长</h2>
+            <p className=" text-slate-500">Skills</p>
           </motion.div>
 
           <motion.div variants={itemVariants}>
             <GlassCard padding="lg">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-body font-semibold text-slate-900 mb-3">前端技术</h3>
+                  <h3 className=" font-semibold text-slate-900 mb-3">前端技术</h3>
                   <div className="flex flex-wrap gap-2">
                     {["React", "Next.js", "TypeScript", "Vue.js", "Tailwind CSS", "Framer Motion"].map((skill) => (
-                      <span key={skill} className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm font-body">
+                      <span key={skill} className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm ">
                         {skill}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-body font-semibold text-slate-900 mb-3">后端 & 工具</h3>
+                  <h3 className=" font-semibold text-slate-900 mb-3">后端 & 工具</h3>
                   <div className="flex flex-wrap gap-2">
                     {["Node.js", "Python", "PostgreSQL", "MongoDB", "Docker", "Git"].map((skill) => (
-                      <span key={skill} className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm font-body">
+                      <span key={skill} className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm ">
                         {skill}
                       </span>
                     ))}
