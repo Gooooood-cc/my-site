@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { AIChat } from "@/components/ai-chat";
+import { Navbar } from "@/components/layout/navbar";
 
 const dmSerif = DM_Serif_Display({
   weight: "400",
@@ -40,6 +41,7 @@ export default function RootLayout({
           selection:text-blue-900
         `}
       >
+        <Navbar />
         {children}
         <AIChat />
       </body>

@@ -1,20 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { MeshGradientBackground } from "@/components/background/mesh-gradient";
-import { GlassCard, BentoItem, FeatureCard } from "@/components/ui/glass-card";
-import { BentoGrid } from "@/components/layout/bento-grid";
-import { ArrowUpRight, Sparkles, Code2, Palette, Camera, FileText, ArrowRight } from "lucide-react";
+import { GlassCard } from "@/components/ui/glass-card";
+import { ArrowUpRight, Sparkles, Code2, Palette, Globe } from "lucide-react";
 
-// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3,
-    },
+    transition: { staggerChildren: 0.15, delayChildren: 0.3 },
   },
 };
 
@@ -23,36 +19,44 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 1, 0.5, 1] as const,
-    },
+    transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] as const },
   },
 };
+
+const featuredProjects = [
+  {
+    id: 1,
+    title: "电商平台",
+    titleEn: "E-commerce Platform",
+    description: "全栈电商解决方案，支持实时库存管理",
+    descriptionEn: "Full-stack solution with real-time inventory",
+    tags: ["React", "Node.js", "MongoDB"],
+    color: "from-blue-50 to-indigo-100",
+  },
+  {
+    id: 2,
+    title: "数据分析仪表盘",
+    titleEn: "Analytics Dashboard",
+    description: "可视化数据分析平台",
+    descriptionEn: "Data visualization platform",
+    tags: ["Next.js", "D3.js", "PostgreSQL"],
+    color: "from-emerald-50 to-teal-100",
+  },
+  {
+    id: 3,
+    title: "AI 助手应用",
+    titleEn: "AI Assistant App",
+    description: "基于大语言模型的智能对话系统",
+    descriptionEn: "LLM-based intelligent chat system",
+    tags: ["TypeScript", "OpenAI", "Tailwind"],
+    color: "from-purple-50 to-violet-100",
+  },
+];
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
       <MeshGradientBackground />
-
-      {/* Navigation */}
-      <motion.nav 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
-      >
-        <div className="max-w-7xl mx-auto">
-          <GlassCard padding="sm" variant="subtle" className="flex items-center justify-between">
-            <span className="font-display text-xl text-slate-900">Portfolio</span>
-            <div className="flex items-center gap-6 text-sm font-body">
-              <a href="#work" className="text-slate-600 hover:text-slate-900 transition-colors">Work</a>
-              <a href="#about" className="text-slate-600 hover:text-slate-900 transition-colors">About</a>
-              <a href="#contact" className="text-slate-600 hover:text-slate-900 transition-colors">Contact</a>
-            </div>
-          </GlassCard>
-        </div>
-      </motion.nav>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-32 pb-20 px-6">
@@ -62,13 +66,15 @@ export default function Home() {
           animate="visible"
           className="max-w-7xl mx-auto w-full"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left: Intro Text */}
             <div className="lg:col-span-7 space-y-8">
               <motion.div variants={itemVariants}>
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 border border-white/60 text-sm text-slate-600 backdrop-blur-sm">
                   <Sparkles className="w-4 h-4" />
-                  Available for freelance work
+                  <span>前端开发工程师</span>
+                  <span className="text-slate-400">/</span>
+                  <span className="text-slate-400">Frontend Developer</span>
                 </span>
               </motion.div>
 
@@ -76,74 +82,97 @@ export default function Home() {
                 variants={itemVariants}
                 className="font-display text-5xl sm:text-6xl lg:text-7xl text-slate-900 leading-[1.1]"
               >
-                Crafting digital
+                你好，我是
                 <br />
-                <span className="text-slate-400">experiences</span>
-                <br />
-                with precision
+                <span className="text-slate-400">WinterChen</span>
               </motion.h1>
 
               <motion.p 
                 variants={itemVariants}
                 className="font-body text-lg sm:text-xl text-slate-500 max-w-xl leading-relaxed"
               >
-                Frontend developer and designer specializing in building elegant, 
-                performant web applications with modern technologies.
+                专注于构建优雅、高性能的 Web 应用
+                <br />
+                <span className="text-slate-400">
+                  Building elegant, high-performance web applications
+                </span>
               </motion.p>
 
               <motion.div variants={itemVariants} className="flex items-center gap-4 pt-4">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group px-8 py-4 bg-slate-900 text-white rounded-2xl font-body font-medium flex items-center gap-2 hover:bg-slate-800 transition-colors"
-                >
-                  View Projects
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 bg-white/60 text-slate-900 rounded-2xl font-body font-medium border border-white/60 backdrop-blur-sm hover:bg-white/80 transition-colors"
-                >
-                  Get in Touch
-                </motion.button>
+                <Link href="/projects">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group px-8 py-4 bg-slate-900 text-white rounded-2xl font-body font-medium flex items-center gap-2 hover:bg-slate-800 transition-colors"
+                  >
+                    查看项目
+                    <span className="text-slate-400 text-sm">View Projects</span>
+                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </motion.button>
+                </Link>
+                <Link href="/resume">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-8 py-4 bg-white/60 text-slate-900 rounded-2xl font-body font-medium border border-white/60 backdrop-blur-sm hover:bg-white/80 transition-colors"
+                  >
+                    查看简历
+                    <span className="text-slate-400 text-sm ml-1">Resume</span>
+                  </motion.button>
+                </Link>
               </motion.div>
             </div>
 
-            {/* Right: Visual Element */}
+            {/* Right: Avatar & Stats */}
             <motion.div 
               variants={itemVariants}
               className="lg:col-span-5"
             >
               <GlassCard variant="elevated" padding="2xl" className="relative overflow-hidden">
-                <div className="aspect-square rounded-3xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-24 h-24 mx-auto rounded-full bg-slate-900/5 flex items-center justify-center">
-                      <Code2 className="w-10 h-10 text-slate-700" />
-                    </div>
-                    <div>
-                      <p className="font-display text-3xl text-slate-900">5+</p>
-                      <p className="font-body text-slate-500">Years Experience</p>
-                    </div>
+                <div className="aspect-square rounded-3xl bg-gradient-to-br from-slate-100 to-slate-200 flex flex-col items-center justify-center">
+                  {/* Avatar placeholder */}
+                  <div className="w-32 h-32 rounded-full bg-slate-300 mb-6 flex items-center justify-center text-4xl">
+                    👨‍💻
+                  </div>
+                  <div className="text-center space-y-2">
+                    <p className="font-display text-2xl text-slate-900">WinterChen</p>
+                    <p className="font-body text-slate-500">全栈开发者</p>
+                    <p className="font-body text-sm text-slate-400">Full Stack Developer</p>
                   </div>
                 </div>
                 
                 {/* Floating badge */}
                 <motion.div 
-                  className="absolute -bottom-4 -right-4 px-6 py-3 bg-slate-900 text-white rounded-2xl font-body text-sm shadow-xl"
-                  animate={{ y: [0, -8, 0] }}
+                  className="absolute -bottom-2 -right-2 px-4 py-2 bg-slate-900 text-white rounded-xl font-body text-sm shadow-xl"
+                  animate={{ y: [0, -6, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  React & Next.js Expert
+                  5+ 年经验
                 </motion.div>
               </GlassCard>
+
+              {/* Quick Stats */}
+              <div className="grid grid-cols-3 gap-3 mt-4">
+                <GlassCard padding="md" className="text-center">
+                  <p className="font-display text-2xl text-slate-900">50+</p>
+                  <p className="font-body text-xs text-slate-500">项目</p>
+                </GlassCard>
+                <GlassCard padding="md" className="text-center">
+                  <p className="font-display text-2xl text-slate-900">30+</p>
+                  <p className="font-body text-xs text-slate-500">客户</p>
+                </GlassCard>
+                <GlassCard padding="md" className="text-center">
+                  <p className="font-display text-2xl text-slate-900">5+</p>
+                  <p className="font-body text-xs text-slate-500">年</p>
+                </GlassCard>
+              </div>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* Bento Grid Section */}
-      <section id="work" className="py-24 px-6">
+      {/* Featured Projects Section */}
+      <section id="projects" className="py-24 px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -153,197 +182,104 @@ export default function Home() {
         >
           <div className="flex items-end justify-between mb-12">
             <div>
-              <h2 className="font-display text-4xl sm:text-5xl text-slate-900 mb-4">
-                Selected Work
+              <h2 className="font-display text-4xl sm:text-5xl text-slate-900 mb-2">
+                精选作品
               </h2>
               <p className="font-body text-lg text-slate-500">
-                A collection of projects that showcase my expertise
+                Featured Work
               </p>
             </div>
-            <motion.button
-              whileHover={{ x: 4 }}
+            <Link 
+              href="/projects" 
               className="hidden sm:flex items-center gap-2 text-slate-600 hover:text-slate-900 font-body transition-colors"
             >
-              View all projects
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
+              查看全部
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          <BentoGrid maxWidth="full" gap="lg">
-            {/* Featured Project - Large */}
-            <BentoItem colSpan={2} rowSpan={2} variant="elevated">
-              <div className="h-full flex flex-col">
-                <div className="flex items-start justify-between mb-8">
-                  <div>
-                    <span className="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 text-sm font-body mb-4">
-                      Featured
-                    </span>
-                    <h3 className="font-display text-3xl text-slate-900 mb-2">
-                      E-commerce Platform
-                    </h3>
-                    <p className="font-body text-slate-500">
-                      Full-stack solution with real-time inventory
-                    </p>
-                  </div>
-                  <ArrowUpRight className="w-6 h-6 text-slate-400" />
-                </div>
-                <div className="flex-1 min-h-[200px] rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-                  <span className="font-body text-slate-400">Project Preview</span>
-                </div>
-              </div>
-            </BentoItem>
-
-            {/* Skills Card */}
-            <FeatureCard
-              icon={<Code2 className="w-6 h-6" />}
-              title="Development"
-              description="React, Next.js, TypeScript, Node.js, and modern tooling"
-            />
-
-            {/* Design Card */}
-            <FeatureCard
-              icon={<Palette className="w-6 h-6" />}
-              title="Design"
-              description="UI/UX design with Figma and design systems"
-            />
-
-            {/* Blog Card */}
-            <BentoItem variant="subtle">
-              <div className="h-full flex flex-col justify-between">
-                <FileText className="w-8 h-8 text-slate-400 mb-4" />
-                <div>
-                  <h3 className="font-display text-xl text-slate-900 mb-2">Latest Writing</h3>
-                  <p className="font-body text-sm text-slate-500">
-                    Thoughts on frontend architecture and design systems
-                  </p>
-                </div>
-              </div>
-            </BentoItem>
-
-            {/* Photography Card */}
-            <BentoItem variant="subtle">
-              <div className="h-full flex flex-col justify-between">
-                <Camera className="w-8 h-8 text-slate-400 mb-4" />
-                <div>
-                  <h3 className="font-display text-xl text-slate-900 mb-2">Photography</h3>
-                  <p className="font-body text-sm text-slate-500">
-                    Visual storytelling through the lens
-                  </p>
-                </div>
-              </div>
-            </BentoItem>
-
-            {/* Contact CTA - Wide */}
-            <BentoItem colSpan={2}>
-              <GlassCard 
-                padding="xl" 
-                hoverEffect 
-                className="h-full bg-gradient-to-r from-slate-900 to-slate-800 text-white"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
               >
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                  <div>
-                    <h3 className="font-display text-2xl mb-2">Let&apos;s work together</h3>
-                    <p className="font-body text-slate-300">
-                      Have a project in mind? I&apos;d love to hear about it.
-                    </p>
-                  </div>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-white text-slate-900 rounded-2xl font-body font-medium whitespace-nowrap hover:bg-slate-100 transition-colors"
+                <Link href="/projects">
+                  <GlassCard 
+                    padding="lg" 
+                    hoverEffect 
+                    className="h-full cursor-pointer group"
                   >
-                    Start a Conversation
-                  </motion.button>
-                </div>
-              </GlassCard>
-            </BentoItem>
-          </BentoGrid>
-        </motion.div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-24 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-7xl mx-auto"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="font-display text-4xl sm:text-5xl text-slate-900 mb-6">
-                Building the web,
-                <br />
-                <span className="text-slate-400">one pixel at a time</span>
-              </h2>
-              <div className="space-y-4 font-body text-lg text-slate-600 leading-relaxed">
-                <p>
-                  I&apos;m a frontend developer with a passion for creating beautiful, 
-                  functional digital experiences. With over 5 years of experience, 
-                  I&apos;ve worked with startups and established companies to bring 
-                  their visions to life.
-                </p>
-                <p>
-                  My approach combines technical expertise with an eye for design, 
-                  ensuring that every project not only works flawlessly but also 
-                  looks and feels exceptional.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <GlassCard className="aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <p className="font-display text-4xl text-slate-900">50+</p>
-                  <p className="font-body text-slate-500">Projects</p>
-                </div>
-              </GlassCard>
-              <GlassCard className="aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <p className="font-display text-4xl text-slate-900">30+</p>
-                  <p className="font-body text-slate-500">Clients</p>
-                </div>
-              </GlassCard>
-              <GlassCard className="aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <p className="font-display text-4xl text-slate-900">5+</p>
-                  <p className="font-body text-slate-500">Years</p>
-                </div>
-              </GlassCard>
-              <GlassCard className="aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <p className="font-display text-4xl text-slate-900">∞</p>
-                  <p className="font-body text-slate-500">Coffee</p>
-                </div>
-              </GlassCard>
-            </div>
+                    <div className={`h-48 rounded-2xl bg-gradient-to-br ${project.color} mb-6 flex items-center justify-center`}>
+                      <div className="w-16 h-16 rounded-2xl bg-white/80 flex items-center justify-center">
+                        {index === 0 ? <Code2 className="w-8 h-8 text-slate-700" /> :
+                         index === 1 ? <Palette className="w-8 h-8 text-slate-700" /> :
+                         <Globe className="w-8 h-8 text-slate-700" />}
+                      </div>
+                    </div>
+                    <h3 className="font-display text-xl text-slate-900 mb-1">
+                      {project.title}
+                    </h3>
+                    <p className="font-body text-sm text-slate-400 mb-3">
+                      {project.titleEn}
+                    </p>
+                    <p className="font-body text-slate-600 mb-4">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span 
+                          key={tag}
+                          className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm font-body"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </GlassCard>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="py-16 px-6 border-t border-slate-200/60">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-center md:text-left">
-              <p className="font-display text-2xl text-slate-900 mb-2">Let&apos;s create something amazing</p>
-              <p className="font-body text-slate-500">hello@example.com</p>
-            </div>
-            <div className="flex items-center gap-4">
-              {["GitHub", "Twitter", "LinkedIn", "Dribbble"].map((social) => (
-                <motion.a
-                  key={social}
-                  href="#"
-                  whileHover={{ y: -2 }}
-                  className="w-12 h-12 rounded-2xl bg-white/60 border border-white/60 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-white/80 transition-colors backdrop-blur-sm font-body text-sm"
-                >
-                  {social[0]}
-                </motion.a>
-              ))}
-            </div>
+      <footer className="py-16 px-6 border-t border-slate-200/60">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="font-display text-2xl text-slate-900 mb-2">
+            让我们一起创造精彩
+          </p>
+          <p className="font-body text-slate-500 mb-6">
+            Let&apos;s create something amazing together
+          </p>
+          <div className="flex items-center justify-center gap-4">
+            <a 
+              href="https://github.com/WinterChenS"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 rounded-2xl bg-white/60 border border-white/60 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-white/80 transition-colors backdrop-blur-sm"
+              aria-label="GitHub"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a 
+              href="mailto:your.email@example.com"
+              className="w-12 h-12 rounded-2xl bg-white/60 border border-white/60 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-white/80 transition-colors backdrop-blur-sm"
+              aria-label="Email"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </a>
           </div>
-          <p className="text-center font-body text-sm text-slate-400 mt-12">
-            © 2026 Crafted with care using Next.js & Tailwind CSS
+          <p className="text-center font-body text-sm text-slate-400 mt-8">
+            © 2026 WinterChen. 使用 Next.js & Tailwind CSS 构建
           </p>
         </div>
       </footer>
