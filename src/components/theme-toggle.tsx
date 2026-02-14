@@ -1,11 +1,23 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useThemeStore } from "@/lib/store/theme-store";
 import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useThemeStore();
+
+  // Listen for AI theme toggle event
+  useEffect(() => {
+    const handleAIThemeToggle = () => {
+      toggleTheme();
+    };
+    window.addEventListener("ai-toggle-theme-internal", handleAIThemeToggle);
+    return () => {
+      window.removeEventListener("ai-toggle-theme-internal", handleAIThemeToggle);
+    };
+  }, [toggleTheme]);
 
   return (
     <motion.button
