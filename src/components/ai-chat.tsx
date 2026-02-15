@@ -354,7 +354,7 @@ export function AIChat() {
                         </>
                       )}
                       {isListening ? (
-                        <MicOff className="w-5 h-5 relative z-10 text-white" />
+                        <Mic className="w-5 h-5 relative z-10 text-white animate-pulse" />
                       ) : (
                         <Mic className="w-5 h-5 text-red-500 dark:text-red-400" />
                       )}
