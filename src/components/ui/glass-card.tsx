@@ -58,6 +58,7 @@ export function GlassCard({
       dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.25),0_24px_60px_rgba(0,0,0,0.25),0_48px_96px_rgba(0,0,0,0.2)]
       hover:bg-white/70 dark:hover:bg-slate-800/70
       hover:scale-[1.01]
+      will-change-transform
     `
     : "";
 

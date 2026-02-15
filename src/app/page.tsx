@@ -129,31 +129,22 @@ export default function Home() {
             >
               <div className="relative flex flex-col items-center">
                 {/* Decorative gradient glow */}
-                <div className="absolute inset-0 w-64 h-64 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-purple-400 via-pink-400 to-blue-400 opacity-20 blur-2xl animate-pulse" />
+                <div className="absolute inset-0 w-64 h-64 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-purple-400 via-pink-400 to-blue-400 opacity-20 blur-2xl" />
                 
                 {/* Avatar */}
                 <div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center shadow-2xl overflow-hidden border-4 border-white/50 dark:border-slate-700/50">
-                  <motion.span 
-                    className="text-7xl lg:text-8xl"
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  >
+                  <span className="text-7xl lg:text-8xl">
                     👨‍💻
-                  </motion.span>
+                  </span>
                 </div>
                 
-                {/* Experience badge */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: 0.5 }}
-                  className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-5 py-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-full shadow-xl border border-white/60 dark:border-slate-700/60"
-                >
+                {/* Experience badge - fixed below avatar, no animation */}
+                <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 px-5 py-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-full shadow-xl border border-white/60 dark:border-slate-700/60 z-10">
                   <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 whitespace-nowrap">
                     4年工作经验
                     <span className="text-slate-400 dark:text-slate-500 ml-1">/ 4Y Exp</span>
                   </span>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           </div>

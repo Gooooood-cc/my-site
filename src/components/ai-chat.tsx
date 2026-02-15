@@ -334,29 +334,29 @@ export function AIChat() {
                       size="icon"
                       className={`relative w-11 h-11 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 ${
                         isListening 
-                          ? "bg-red-500 hover:bg-red-600 text-white" 
-                          : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700"
+                          ? "bg-red-600 hover:bg-red-700 text-white" 
+                          : "bg-red-100 hover:bg-red-200 border-2 border-red-400 dark:bg-red-900/30 dark:hover:bg-red-900/50 dark:border-red-600"
                       }`}
                       aria-label={isListening ? "停止录音" : "开始语音输入"}
                     >
                       {isListening && (
                         <>
                           <motion.div
-                            className="absolute inset-0 rounded-full bg-red-500"
+                            className="absolute inset-0 rounded-full bg-red-600"
                             animate={{ scale: [1, 1.6, 1], opacity: [0.8, 0, 0.8] }}
                             transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
                           />
                           <motion.div
-                            className="absolute inset-0 rounded-full bg-red-400"
+                            className="absolute inset-0 rounded-full bg-red-500"
                             animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
                             transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut", delay: 0.3 }}
                           />
                         </>
                       )}
                       {isListening ? (
-                        <MicOff className="w-5 h-5 relative z-10" />
+                        <MicOff className="w-5 h-5 relative z-10 text-white" />
                       ) : (
-                        <Mic className="w-5 h-5" />
+                        <Mic className="w-5 h-5 text-red-500 dark:text-red-400" />
                       )}
                     </Button>
                     
