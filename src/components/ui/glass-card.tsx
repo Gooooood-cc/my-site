@@ -59,6 +59,7 @@ export function GlassCard({
       hover:bg-white/70 dark:hover:bg-slate-800/70
       hover:scale-[1.01]
       will-change-transform
+      transform-gpu
     `
     : "";
 

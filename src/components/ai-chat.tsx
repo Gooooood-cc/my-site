@@ -318,13 +318,13 @@ export function AIChat() {
 
               {/* Input */}
               <div className="p-4 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
-                <div className="flex gap-2 items-end">
+                <div className="flex gap-3 justify-center items-end">
                   <Input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyPress}
-                    placeholder={isListening ? "正在听您说话..." : "输入消息或点击麦克风语音输入..."}
-                    className="flex-1"
+                    placeholder={isListening ? "正在听您说话..." : "输入消息..."}
+                    className="flex-1 max-w-[300px]"
                     disabled={isLoading}
                   />
                   <div className="relative">
@@ -332,31 +332,31 @@ export function AIChat() {
                       onClick={toggleListening}
                       disabled={isLoading}
                       size="icon"
-                      className={`relative w-11 h-11 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 ${
+                      className={`relative w-11 h-11 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
                         isListening 
-                          ? "bg-red-600 hover:bg-red-700 text-white" 
-                          : "bg-red-100 hover:bg-red-200 border-2 border-red-400 dark:bg-red-900/30 dark:hover:bg-red-900/50 dark:border-red-600"
+                          ? "bg-blue-600 hover:bg-blue-700 text-white" 
+                          : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700"
                       }`}
                       aria-label={isListening ? "停止录音" : "开始语音输入"}
                     >
                       {isListening && (
                         <>
                           <motion.div
-                            className="absolute inset-0 rounded-full bg-red-600"
+                            className="absolute inset-0 rounded-full bg-blue-500"
                             animate={{ scale: [1, 1.6, 1], opacity: [0.8, 0, 0.8] }}
                             transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
                           />
                           <motion.div
-                            className="absolute inset-0 rounded-full bg-red-500"
+                            className="absolute inset-0 rounded-full bg-blue-400"
                             animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
                             transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut", delay: 0.3 }}
                           />
                         </>
                       )}
                       {isListening ? (
-                        <Mic className="w-5 h-5 relative z-10 text-white animate-pulse" />
+                        <Mic className="w-5 h-5 relative z-10 text-white" />
                       ) : (
-                        <Mic className="w-5 h-5 text-red-500 dark:text-red-400" />
+                        <Mic className="w-5 h-5 text-slate-600 dark:text-slate-300" />
                       )}
                     </Button>
                     
@@ -370,7 +370,7 @@ export function AIChat() {
                           transition={{ duration: 0.2 }}
                           className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap"
                         >
-                          <span className="px-3 py-1.5 bg-red-500 text-white text-xs font-medium rounded-full shadow-lg flex items-center gap-1.5">
+                          <span className="px-3 py-1.5 bg-blue-500 text-white text-xs font-medium rounded-full shadow-lg flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
                             正在录音
                           </span>
