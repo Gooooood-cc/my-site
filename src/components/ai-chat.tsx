@@ -318,35 +318,74 @@ export function AIChat() {
 
               {/* Input */}
               <div className="p-4 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-end">
                   <Input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyPress}
-                    placeholder="输入消息或语音输入..."
+                    placeholder={isListening ? "正在听您说话..." : "输入消息或点击麦克风语音输入..."}
                     className="flex-1"
                     disabled={isLoading}
                   />
-                  <Button
-                    onClick={toggleListening}
-                    disabled={isLoading}
-                    size="icon"
-                    variant={isListening ? "default" : "outline"}
-                    className={isListening ? "bg-red-500 hover:bg-red-600" : ""}
-                  >
-                    {isListening ? (
-                      <MicOff className="w-4 h-4" />
-                    ) : (
-                      <Mic className="w-4 h-4" />
-                    )}
-                  </Button>
+                  <div className="relative">
+                    <Button
+                      onClick={toggleListening}
+                      disabled={isLoading}
+                      size="icon"
+                      className={`relative w-11 h-11 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 ${
+                        isListening 
+                          ? "bg-red-500 hover:bg-red-600 text-white" 
+                          : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700"
+                      }`}
+                      aria-label={isListening ? "停止录音" : "开始语音输入"}
+                    >
+                      {isListening && (
+                        <>
+                          <motion.div
+                            className="absolute inset-0 rounded-full bg-red-500"
+                            animate={{ scale: [1, 1.6, 1], opacity: [0.8, 0, 0.8] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
+                          />
+                          <motion.div
+                            className="absolute inset-0 rounded-full bg-red-400"
+                            animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut", delay: 0.3 }}
+                          />
+                        </>
+                      )}
+                      {isListening ? (
+                        <MicOff className="w-5 h-5 relative z-10" />
+                      ) : (
+                        <Mic className="w-5 h-5" />
+                      )}
+                    </Button>
+                    
+                    {/* Recording status text */}
+                    <AnimatePresence>
+                      {isListening && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 5, scale: 0.9 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 5, scale: 0.9 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap"
+                        >
+                          <span className="px-3 py-1.5 bg-red-500 text-white text-xs font-medium rounded-full shadow-lg flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+                            正在录音
+                          </span>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                   <Button
                     onClick={handleSend}
                     disabled={isLoading || !input.trim()}
                     size="icon"
-                    className="bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-slate-200"
+                    className="w-11 h-11 bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-slate-200 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 transition-all duration-200"
+                    aria-label="发送消息"
                   >
-                    <Send className="w-4 h-4" />
+                    <Send className="w-5 h-5" />
                   </Button>
                 </div>
               </div>

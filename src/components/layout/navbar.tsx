@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Github, Mail, Download } from "lucide-react";
+import { useState } from "react";
+import { Github, Mail, Download, Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
@@ -14,6 +15,7 @@ const navItems = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <motion.nav 
@@ -101,7 +103,9 @@ export function Navbar() {
             </motion.a>
 
             {/* Theme Toggle */}
-            <ThemeToggle />
+            <div className="hidden sm:block">
+              <ThemeToggle />
+            </div>
 
             {/* Download Resume */}
             <motion.a
@@ -109,35 +113,100 @@ export function Navbar() {
               download
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
             >
               <Download className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">简历</span>
+              <span>简历</span>
             </motion.a>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              aria-label={isMobileMenuOpen ? "关闭菜单" : "打开菜单"}
+              aria-expanded={isMobileMenuOpen}
+            >
+              <AnimatePresence mode="wait">
+                {isMobileMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="w-5 h-5" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="w-5 h-5" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
           </div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      <div className="md:hidden border-t border-slate-200/30 dark:border-slate-800/30">
-        <div className="flex items-center justify-around py-2">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`
-                text-sm font-medium py-2 px-4 rounded-lg transition-colors
-                ${pathname === item.href
-                  ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950"
-                  : "text-slate-600 dark:text-slate-400"
-                }
-              `}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      </div>
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+            className="md:hidden border-t border-slate-200/30 dark:border-slate-800/30 overflow-hidden bg-white/50 dark:bg-slate-950/50 backdrop-blur-xl"
+          >
+            <div className="px-6 py-4 space-y-2">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`
+                      flex items-center justify-between py-3 px-4 rounded-xl text-base font-medium transition-all duration-200
+                      ${pathname === item.href
+                        ? "text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/80 shadow-sm"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-800/80"
+                      }
+                    `}
+                  >
+                    <span>{item.label}</span>
+                    <span className="text-sm text-slate-400 dark:text-slate-500">{item.labelEn}</span>
+                  </Link>
+                </motion.div>
+              ))}
+              
+              {/* Mobile-only actions */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.1, duration: 0.3 }}
+                className="pt-2 border-t border-slate-200/30 dark:border-slate-800/30 mt-2"
+              >
+                <div className="flex items-center justify-between py-2">
+                  <span className="text-sm text-slate-500 dark:text-slate-400">主题</span>
+                  <ThemeToggle />
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
