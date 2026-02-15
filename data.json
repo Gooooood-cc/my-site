@@ -1,0 +1,48 @@
+{
+  "profile": {
+    "name": "Holly Chi",
+    "title": "AI产品经理",
+    "titleEn": "AI Product Manager",
+    "tagline": "搞点实际的能用的",
+    "taglineEn": "Building practical, usable products",
+    "avatar": ""
+  },
+  "workExperience": [
+    {
+      "id": "1",
+      "company": "XX公司",
+      "companyEn": "XX Company",
+      "position": "AI产品经理",
+      "positionEn": "AI Product Manager",
+      "period": "2024 - 至今",
+      "description": "负责AI产品规划与设计",
+      "descriptionEn": "Responsible for AI product planning and design",
+      "highlights": ["主导AI产品从0到1", "提升产品用户体验"],
+      "highlightsEn": ["Led AI product from 0 to 1", "Improved product user experience"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "电商平台",
+      "titleEn": "E-commerce Platform",
+      "description": "全栈电商解决方案，支持实时库存管理",
+      "descriptionEn": "Full-stack solution with real-time inventory management",
+      "technologies": "React, Node.js, MongoDB",
+      "highlights": ["支持万人同时在线", "日处理订单10万+"],
+      "highlightsEn": ["Supports 10,000+ concurrent users", "Processes 100,000+ orders daily"]
+    }
+  ],
+  "skills": [
+    {
+      "category": "AI产品",
+      "categoryEn": "AI Products",
+      "items": ["产品规划", "需求分析", "用户研究", "数据分析"]
+    }
+  ],
+  "contact": {
+    "email": "your.email@example.com",
+    "github": "https://github.com/WinterChenS",
+    "wechat": "WinterChen"
+  }
+}
