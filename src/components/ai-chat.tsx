@@ -184,11 +184,12 @@ export function AIChat() {
       }
     } catch (error) {
       console.error("Chat error:", error);
+      const errorMessage = error instanceof Error ? error.message : "未知错误";
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content: "抱歉，我暂时无法回答。请稍后重试。",
+          content: `抱歉，我暂时无法回答。错误: ${errorMessage}`,
         },
       ]);
     } finally {
@@ -382,10 +383,18 @@ export function AIChat() {
                     onClick={handleSend}
                     disabled={isLoading || !input.trim()}
                     size="icon"
-                    className="w-11 h-11 bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-slate-200 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 transition-all duration-200"
+                    className="w-11 h-11 bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-slate-200 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 transition-all duration-200 disabled:opacity-50"
                     aria-label="发送消息"
                   >
-                    <Send className="w-5 h-5" />
+                    {isLoading ? (
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        className="w-5 h-5 border-2 border-white dark:border-slate-900 border-t-transparent rounded-full"
+                      />
+                    ) : (
+                      <Send className="w-5 h-5" />
+                    )}
                   </Button>
                 </div>
               </div>
