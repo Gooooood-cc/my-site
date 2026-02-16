@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>环境艺术设计 - 专业分析</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f97316;
+            --secondary: #fb923c;
+            --accent: #fda4af;
+            --bg-warm: #1c1917;
+            --bg-card: rgba(28, 25, 23, 0.75);
+            --glass-border: rgba(251, 146, 60, 0.2);
+            --text-warm: #fef3c7;
+            --text-muted: #d6d3d1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'ZCOOL XiaoWei', serif;
+            background: var(--bg-warm);
+            color: var(--text-warm);
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Warm Sunset Background */
+        .sunset-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 100% 80% at 50% 120%, rgba(251, 146, 60, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse 80% 50% at 80% 20%, rgba(249, 115, 22, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 20% 80%, rgba(253, 164, 175, 0.15) 0%, transparent 50%),
+                linear-gradient(180deg, #1c1917 0%, #292524 50%, #1c1917 100%);
+        }
+
+        .sunset-bg::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+        }
+
+        /* Floating warmth */
+        .warm-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: warm-float 18s ease-in-out infinite;
+        }
+
+        .warm-orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(251, 146, 60, 0.2);
+            top: -100px;
+            left: 20%;
+        }
+
+        .warm-orb-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(253, 164, 175, 0.15);
+            bottom: -50px;
+            right: 10%;
+            animation-delay: -6s;
+        }
+
+        .warm-orb-3 {
+            width: 250px;
+            height: 250px;
+            background: rgba(167, 139, 250, 0.1);
+            top: 40%;
+            left: 60%;
+            animation-delay: -12s;
+        }
+
+        @keyframes warm-float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 20px) scale(1.1); }
+        }
+
+        /* Slides */
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(30px) scale(0.95);
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Warm Glass Card */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 52px 60px;
+            max-width: 880px;
+            width: 90%;
+            box-shadow:
+                0 0 0 1px rgba(251, 146, 60, 0.1) inset,
+                0 25px 50px -25px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.3;
+            color: var(--text-warm);
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 400;
+            color: var(--text-warm);
+            margin-bottom: 36px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-warm);
+            margin-bottom: 14px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Cover */
+        .slide-cover .subtitle {
+            margin-top: 20px;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            text-align: center;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 300;
+        }
+
+        /* Answer */
+        .answer-label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            text-align: center;
+            font-family: 'Noto Sans SC', sans-serif;
+            letter-spacing: 0.15em;
+        }
+
+        .answer-title {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            text-align: center;
+            color: #fdba74;
+            animation: warm-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes warm-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.02); }
+        }
+
+        .answer-note {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Bento */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            width: 90%;
+            max-width: 920px;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            padding: 26px;
+            transition: all 0.4s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(251, 146, 60, 0.4);
+            background: rgba(28, 25, 23, 0.85);
+        }
+
+        .bento-card.full {
+            grid-column: span 2;
+        }
+
+        /* List */
+        .content-list {
+            list-style: none;
+        }
+
+        .content-list li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .content-list li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--secondary);
+            font-size: 1.4rem;
+            line-height: 1.2;
+        }
+
+        /* Issues */
+        .issue-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 16px;
+            padding: 14px;
+            background: rgba(251, 146, 60, 0.05);
+            border-radius: 12px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .issue-row:hover {
+            background: rgba(251, 146, 60, 0.1);
+        }
+
+        .issue-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .issue-text h4 {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-warm);
+            margin-bottom: 4px;
+        }
+
+        .issue-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Two Column */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            width: 90%;
+            max-width: 920px;
+        }
+
+        .col-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            padding: 28px;
+        }
+
+        .col-card.danger {
+            border-color: rgba(253, 164, 175, 0.3);
+        }
+
+        .col-card.safe {
+            border-color: rgba(167, 230, 116, 0.3);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 18px;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .tag.danger {
+            background: rgba(253, 164, 175, 0.15);
+            color: #fda4af;
+            border: 1px solid rgba(253, 164, 175, 0.3);
+        }
+
+        .tag.safe {
+            background: rgba(167, 230, 116, 0.15);
+            color: #a6e35a;
+            border: 1px solid rgba(167, 230, 116, 0.3);
+        }
+
+        /* Summary */
+        .summary-msg {
+            font-size: 1.35rem;
+            line-height: 2;
+            text-align: center;
+            color: var(--text-warm);
+        }
+
+        .summary-sub {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* Ending */
+        .ending-main {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: 1.7rem;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .ending-sub {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 36px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 24px;
+            color: #1c1917;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px -8px rgba(251, 146, 60, 0.5);
+        }
+
+        /* Nav */
+        .nav-dots {
+            position: fixed;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--secondary);
+            transform: scale(1.3);
+            box-shadow: 0 0 12px rgba(251, 146, 60, 0.5);
+        }
+
+        .arrow-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            color: var(--text-warm);
+            font-size: 1.4rem;
+        }
+
+        .arrow-nav:hover {
+            background: rgba(251, 146, 60, 0.15);
+            border-color: var(--secondary);
+        }
+
+        .arrow-prev { left: 20px; }
+        .arrow-next { right: 20px; }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary), var(--primary));
+            z-index: 100;
+            transition: width 0.3s ease;
+        }
+
+        .slide-num {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 14px;
+            color: var(--text-muted);
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.8rem;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .glass-card { padding: 28px; }
+            .bento-grid, .two-col { grid-template-columns: 1fr; }
+            .bento-card.full { grid-column: span 1; }
+            .arrow-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <div class="sunset-bg">
+            <div class="warm-orb warm-orb-1"></div>
+            <div class="warm-orb warm-orb-2"></div>
+            <div class="warm-orb warm-orb-3"></div>
+        </div>
+
+        <div class="progress-bar" id="progress"></div>
+        <div class="slide-num" id="counter">1 / 8</div>
+
+        <!-- Slide 1 -->
+        <div class="slide slide-cover active" data-index="0">
+            <div class="glass-card">
+                <h1>我为什么不推荐的艺术专业？</h1>
+                <p class="subtitle">深度解析 · 就业前景 · 真实数据</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" data-index="1">
+            <div class="glass-card" style="text-align: center;">
+                <p class="answer-label">答案就是</p>
+                <h1 class="answer-title">环境艺术设计</h1>
+                <p class="answer-note">（我就这么直接说了）</p>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" data-index="2">
+            <h2>就业方向</h2>
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <h3>室内设计</h3>
+                    <ul class="content-list">
+                        <li>家装设计</li>
+                        <li>工装设计</li>
+                        <li>软装搭配</li>
+                    </ul>
+                </div>
+                <div class="bento-card">
+                    <h3>园林景观</h3>
+                    <ul class="content-list">
+                        <li>室外设计</li>
+                        <li>城市规划</li>
+                        <li>公共艺术</li>
+                    </ul>
+                </div>
+                <div class="bento-card full">
+                    <p style="text-align: center; color: var(--text-muted);">(说白了就这两条路)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide" data-index="3">
+            <h2>室内设计 · 现状</h2>
+            <div class="glass-card">
+                <div class="issue-row">
+                    <span class="issue-icon">🎓</span>
+                    <div class="issue-text">
+                        <h4>双非毕业？设计师岗位想都别想</h4>
+                        <p>学历歧视严重，简历石沉大海</p>
+                    </div>
+                </div>
+                <div class="issue-row">
+                    <span class="issue-icon">💼</span>
+                    <div class="issue-text">
+                        <h4>说得再好听，也就是个工具人</h4>
+                        <p>半制图半销售，什么都得干</p>
+                    </div>
+                </div>
+                <div class="issue-row">
+                    <span class="issue-icon">💰</span>
+                    <div class="issue-text">
+                        <h4>工资？和业绩绑一块儿</h4>
+                        <p>低起来1000-2000都见过</p>
+                    </div>
+                </div>
+                <div class="issue-row">
+                    <span class="issue-icon">🚪</span>
+                    <div class="issue-text">
+                        <h4>门槛？会点CAD就敢说自己是设计师</h4>
+                        <p>满大街都是"设计师"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide" data-index="4">
+            <h2>室外领域 · 园林景观</h2>
+            <div class="glass-card" style="text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 24px;">🏗️</div>
+                <h3 style="font-size: 1.6rem; margin-bottom: 14px;">园林景观 = 地产的跟班</h3>
+                <p style="font-size: 1.1rem;">地产都凉了，园林还能好到哪去？</p>
+            </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide" data-index="5">
+            <h2>适合谁？</h2>
+            <div class="two-col">
+                <div class="col-card safe">
+                    <span class="tag safe">985/211 大佬</span>
+                    <h3 style="color: #a6e35a;">→ 放心冲</h3>
+                    <ul class="content-list">
+                        <li>行业需要新鲜血液</li>
+                        <li>有更多优质机会</li>
+                        <li>起点就比别人高</li>
+                    </ul>
+                </div>
+                <div class="col-card danger">
+                    <span class="tag danger">双非/专科</span>
+                    <h3 style="color: #fda4af;">→ 悠着点</h3>
+                    <ul class="content-list">
+                        <li>每年砸1-2万学习</li>
+                        <li>出来工资1-2千...</li>
+                        <li>投入产出比太低</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide" data-index="6">
+            <div class="glass-card" style="text-align: center;">
+                <h2>总结</h2>
+                <p class="summary-msg">360行，行行都骂娘</p>
+                <p class="summary-sub">自己选的路，跪着也要走完</p>
+            </div>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="slide" data-index="7">
+            <div class="glass-card" style="text-align: center;">
+                <h2 class="ending-main">祝各位都能被dream school录取！</h2>
+                <p class="ending-sub">点个关注，跟着狗哥打破设计圈信息差</p>
+                <button class="cta-btn">点个关注</button>
+            </div>
+        </div>
+
+        <div class="nav-dots" id="nav"></div>
+        <div class="arrow-nav arrow-prev" onclick="prev()">‹</div>
+        <div class="arrow-nav arrow-next" onclick="next()">›</div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+        let cur = 0;
+
+        const nav = document.getElementById('nav');
+        for (let i = 0; i < total; i++) {
+            const btn = document.createElement('button');
+            btn.className = 'nav-dot' + (i === 0 ? ' active' : '');
+            btn.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            btn.onclick = () => go(i);
+            nav.appendChild(btn);
+        }
+
+        function update() {
+            slides.forEach((s, i) => s.classList.toggle('active', i === cur));
+            document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+            document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+            document.getElementById('counter').textContent = `${cur + 1} / ${total}`;
+        }
+
+        function next() { cur = (cur + 1) % total; update(); }
+        function prev() { cur = (cur - 1 + total) % total; update(); }
+        function go(i) { cur = i; update(); }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === ' ') next();
+            else if (e.key === 'ArrowLeft') prev();
+        });
+
+        update();
+    </script>
+</body>
+</html>

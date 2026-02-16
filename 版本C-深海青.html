@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>环境艺术设计 - 专业分析</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal: #14b8a6;
+            --cyan: #22d3ee;
+            --sky: #38bdf8;
+            --bg-dark: #0c1222;
+            --bg-card: rgba(12, 18, 34, 0.65);
+            --glass-border: rgba(34, 211, 238, 0.15);
+            --text-light: #f0fdfa;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Ocean Depths */
+        .ocean-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 100% 60% at 50% 100%, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 70% 40% at 20% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 80% 80%, rgba(34, 211, 238, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, #0c1222 0%, #0f172a 50%, #0c1222 100%);
+        }
+
+        /* Wave layers */
+        .wave {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2314b8a6' fill-opacity='0.05' d='M0,160 C240,200 480,80 720,120 C960,160 1200,240 1440,192 L1440,320 L0,320 Z'%3E%3C/animate%3E%3C/path%3E%3C/svg%3E") repeat-x;
+            animation: wave-move 25s linear infinite;
+        }
+
+        .wave-1 {
+            bottom: 20%;
+            opacity: 0.6;
+            animation-duration: 20s;
+        }
+
+        .wave-2 {
+            bottom: 15%;
+            opacity: 0.4;
+            animation-duration: 15s;
+            animation-direction: reverse;
+        }
+
+        .wave-3 {
+            bottom: 10%;
+            opacity: 0.2;
+            animation-duration: 18s;
+        }
+
+        @keyframes wave-move {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--cyan);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: particle-float 20s infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 30%; top: 60%; animation-delay: -4s; }
+        .particle:nth-child(3) { left: 50%; top: 30%; animation-delay: -8s; }
+        .particle:nth-child(4) { left: 70%; top: 70%; animation-delay: -12s; }
+        .particle:nth-child(5) { left: 90%; top: 40%; animation-delay: -16s; }
+
+        @keyframes particle-float {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+            50% { transform: translateY(-30px) scale(1.5); opacity: 0.2; }
+        }
+
+        /* Slides */
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(35px) scale(0.97);
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 48px 56px;
+            max-width: 860px;
+            width: 90%;
+            box-shadow:
+                0 0 0 1px rgba(34, 211, 238, 0.08) inset,
+                0 30px 60px -30px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        h2 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* Cover */
+        .slide-cover .subtitle {
+            margin-top: 18px;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            font-weight: 300;
+        }
+
+        /* Answer */
+        .answer-label {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+            text-align: center;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .answer-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+            font-weight: 600;
+            text-align: center;
+            color: var(--cyan);
+            animation: teal-shimmer 5s ease-in-out infinite;
+        }
+
+        @keyframes teal-shimmer {
+            0%, 100% { text-shadow: 0 0 30px rgba(34, 211, 238, 0.3); }
+            50% { text-shadow: 0 0 50px rgba(34, 211, 238, 0.5); }
+        }
+
+        .answer-note {
+            margin-top: 18px;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Bento */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(28px);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 24px;
+            transition: all 0.4s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 211, 238, 0.35);
+            background: rgba(12, 18, 34, 0.8);
+        }
+
+        .bento-card.full {
+            grid-column: span 2;
+        }
+
+        /* List */
+        .content-list {
+            list-style: none;
+        }
+
+        .content-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .content-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            background: var(--teal);
+            border-radius: 50%;
+        }
+
+        /* Issue Cards */
+        .issue-box {
+            margin-bottom: 14px;
+            padding: 16px;
+            background: rgba(20, 184, 166, 0.05);
+            border-radius: 14px;
+            border-left: 2px solid var(--teal);
+            transition: all 0.3s ease;
+        }
+
+        .issue-box:hover {
+            background: rgba(20, 184, 166, 0.1);
+        }
+
+        .issue-box h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .issue-box p {
+            font-size: 0.8rem;
+        }
+
+        /* Two Col */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .col-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(28px);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 26px;
+        }
+
+        .col-card.good {
+            border-color: rgba(34, 211, 238, 0.3);
+        }
+
+        .col-card.warn {
+            border-color: rgba(251, 191, 36, 0.3);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .tag.good {
+            background: rgba(34, 211, 238, 0.12);
+            color: var(--cyan);
+            border: 1px solid rgba(34, 211, 238, 0.25);
+        }
+
+        .tag.warn {
+            background: rgba(251, 191, 36, 0.12);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.25);
+        }
+
+        /* Summary */
+        .summary-main {
+            font-size: 1.25rem;
+            line-height: 1.9;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .summary-sub {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-top: 8px;
+        }
+
+        /* Ending */
+        .ending-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .ending-text {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            margin-bottom: 26px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--teal), var(--cyan));
+            border-radius: 20px;
+            color: #0c1222;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 20px -8px rgba(20, 184, 166, 0.5);
+        }
+
+        /* Nav */
+        .nav-dots {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--cyan);
+            transform: scale(1.3);
+            box-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+        }
+
+        .arrow-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            color: var(--text-light);
+            font-size: 1.3rem;
+        }
+
+        .arrow-nav:hover {
+            background: rgba(20, 184, 166, 0.15);
+            border-color: var(--teal);
+        }
+
+        .arrow-prev { left: 18px; }
+        .arrow-next { right: 18px; }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal), var(--cyan), var(--sky));
+            z-index: 100;
+            transition: width 0.3s ease;
+        }
+
+        .slide-num {
+            position: fixed;
+            top: 22px;
+            right: 22px;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 6px 12px;
+            border-radius: 12px;
+            color: var(--text-dim);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .glass-card { padding: 26px; }
+            .bento-grid, .two-col { grid-template-columns: 1fr; }
+            .bento-card.full { grid-column: span 1; }
+            .arrow-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <div class="ocean-bg">
+            <div class="wave wave-1"></div>
+            <div class="wave wave-2"></div>
+            <div class="wave wave-3"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <div class="progress-bar" id="progress"></div>
+        <div class="slide-num" id="counter">1 / 8</div>
+
+        <!-- Slide 1 -->
+        <div class="slide slide-cover active" data-index="0">
+            <div class="glass-card">
+                <h1>我为什么不推荐的艺术专业？</h1>
+                <p class="subtitle">深度解析 · 就业前景 · 真实数据</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" data-index="1">
+            <div class="glass-card" style="text-align: center;">
+                <p class="answer-label">答案就是</p>
+                <h1 class="answer-title">环境艺术设计</h1>
+                <p class="answer-note">（我就这么直接说了）</p>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" data-index="2">
+            <h2>就业方向</h2>
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <h3>室内设计</h3>
+                    <ul class="content-list">
+                        <li>家装设计</li>
+                        <li>工装设计</li>
+                        <li>软装搭配</li>
+                    </ul>
+                </div>
+                <div class="bento-card">
+                    <h3>园林景观</h3>
+                    <ul class="content-list">
+                        <li>室外设计</li>
+                        <li>城市规划</li>
+                        <li>公共艺术</li>
+                    </ul>
+                </div>
+                <div class="bento-card full">
+                    <p style="text-align: center;">(说白了就这两条路)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide" data-index="3">
+            <h2>室内设计 · 现状</h2>
+            <div class="glass-card">
+                <div class="issue-box">
+                    <h4>双非毕业？设计师岗位想都别想</h4>
+                    <p>学历歧视严重，简历石沉大海</p>
+                </div>
+                <div class="issue-box">
+                    <h4>说得再好听，也就是个工具人</h4>
+                    <p>半制图半销售，什么都得干</p>
+                </div>
+                <div class="issue-box">
+                    <h4>工资？和业绩绑一块儿</h4>
+                    <p>低起来1000-2000都见过</p>
+                </div>
+                <div class="issue-box">
+                    <h4>门槛？会点CAD就敢说自己是设计师</h4>
+                    <p>满大街都是"设计师"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide" data-index="4">
+            <h2>室外领域 · 园林景观</h2>
+            <div class="glass-card" style="text-align: center;">
+                <div style="font-size: 3.5rem; margin-bottom: 20px;">🏗️</div>
+                <h3 style="font-size: 1.4rem; margin-bottom: 12px;">园林景观 = 地产的跟班</h3>
+                <p>地产都凉了，园林还能好到哪去？</p>
+            </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide" data-index="5">
+            <h2>适合谁？</h2>
+            <div class="two-col">
+                <div class="col-card good">
+                    <span class="tag good">985/211 大佬</span>
+                    <h3 style="color: var(--cyan);">→ 放心冲</h3>
+                    <ul class="content-list">
+                        <li>行业需要新鲜血液</li>
+                        <li>有更多优质机会</li>
+                        <li>起点就比别人高</li>
+                    </ul>
+                </div>
+                <div class="col-card warn">
+                    <span class="tag warn">双非/专科</span>
+                    <h3 style="color: #fbbf24;">→ 悠着点</h3>
+                    <ul class="content-list">
+                        <li>每年砸1-2万学习</li>
+                        <li>出来工资1-2千...</li>
+                        <li>投入产出比太低</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide" data-index="6">
+            <div class="glass-card" style="text-align: center;">
+                <h2>总结</h2>
+                <p class="summary-main">360行，行行都骂娘</p>
+                <p class="summary-sub">自己选的路，跪着也要走完</p>
+            </div>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="slide" data-index="7">
+            <div class="glass-card" style="text-align: center;">
+                <h2 class="ending-title">祝各位都能被dream school录取！</h2>
+                <p class="ending-text">点个关注，跟着狗哥打破设计圈信息差</p>
+                <button class="cta-btn">点个关注</button>
+            </div>
+        </div>
+
+        <div class="nav-dots" id="nav"></div>
+        <div class="arrow-nav arrow-prev" onclick="prev()">‹</div>
+        <div class="arrow-nav arrow-next" onclick="next()">›</div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+        let cur = 0;
+
+        const nav = document.getElementById('nav');
+        for (let i = 0; i < total; i++) {
+            const btn = document.createElement('button');
+            btn.className = 'nav-dot' + (i === 0 ? ' active' : '');
+            btn.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            btn.onclick = () => go(i);
+            nav.appendChild(btn);
+        }
+
+        function update() {
+            slides.forEach((s, i) => s.classList.toggle('active', i === cur));
+            document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+            document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+            document.getElementById('counter').textContent = `${cur + 1} / ${total}`;
+        }
+
+        function next() { cur = (cur + 1) % total; update(); }
+        function prev() { cur = (cur - 1 + total) % total; update(); }
+        function go(i) { cur = i; update(); }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === ' ') next();
+            else if (e.key === 'ArrowLeft') prev();
+        });
+
+        update();
+    </script>
+</body>
+</html>
